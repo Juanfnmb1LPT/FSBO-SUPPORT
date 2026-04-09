@@ -26,15 +26,15 @@ function Navbar() {
           </Link>
 
           <div className="hidden md:flex items-center space-x-8">
-            <a href="#home" className="text-gray-300 hover:text-cyan-400 transition-colors">
+            <Link to="/?section=home" className="text-gray-300 hover:text-cyan-400 transition-colors">
               Home
-            </a>
-            <a href="#resources" className="text-gray-300 hover:text-cyan-400 transition-colors">
+            </Link>
+            <Link to="/?section=resources" className="text-gray-300 hover:text-cyan-400 transition-colors">
               Resources
-            </a>
-            <a href="#help" className="text-gray-300 hover:text-cyan-400 transition-colors">
+            </Link>
+            <Link to="/?section=help" className="text-gray-300 hover:text-cyan-400 transition-colors">
               Get Help
-            </a>
+            </Link>
           </div>
 
           <Link
@@ -65,27 +65,27 @@ function Navbar() {
 
         {mobileMenuOpen ? (
           <div className="md:hidden border-t border-gray-800 py-3 space-y-3">
-            <a
-              href="#home"
+            <Link
+              to="/?section=home"
               className="block text-gray-300 hover:text-cyan-400 transition-colors"
               onClick={() => setMobileMenuOpen(false)}
             >
               Home
-            </a>
-            <a
-              href="#resources"
+            </Link>
+            <Link
+              to="/?section=resources"
               className="block text-gray-300 hover:text-cyan-400 transition-colors"
               onClick={() => setMobileMenuOpen(false)}
             >
               Resources
-            </a>
-            <a
-              href="#help"
+            </Link>
+            <Link
+              to="/?section=help"
               className="block text-gray-300 hover:text-cyan-400 transition-colors"
               onClick={() => setMobileMenuOpen(false)}
             >
               Get Help
-            </a>
+            </Link>
             <Link
               to="/support"
               className="inline-flex bg-cyan-500 hover:bg-cyan-600 text-white rounded-full px-5 py-2 btn-primary font-semibold"

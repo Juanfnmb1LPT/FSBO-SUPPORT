@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import SupportPage from "./pages/SupportPage";
 
@@ -8,6 +8,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/support" element={<SupportPage />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </div>
   );
