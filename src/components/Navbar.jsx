@@ -1,8 +1,22 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const scrollTo = (id) => {
+    setMobileMenuOpen(false);
+    if (location.pathname !== "/") {
+      navigate("/");
+      setTimeout(() => {
+        document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+      }, 100);
+    } else {
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
     <nav className="fixed top-0 left-0 right-0 bg-gray-900/95 backdrop-blur-sm border-b border-gray-800 z-50">
@@ -26,15 +40,15 @@ function Navbar() {
           </Link>
 
           <div className="hidden md:flex items-center space-x-8">
-            <Link to="/?section=home" className="text-gray-300 hover:text-cyan-400 transition-colors">
+            <button onClick={() => scrollTo("home")} className="text-gray-300 hover:text-cyan-400 transition-colors">
               Home
-            </Link>
-            <Link to="/?section=resources" className="text-gray-300 hover:text-cyan-400 transition-colors">
+            </button>
+            <button onClick={() => scrollTo("resources")} className="text-gray-300 hover:text-cyan-400 transition-colors">
               Resources
-            </Link>
-            <Link to="/?section=help" className="text-gray-300 hover:text-cyan-400 transition-colors">
+            </button>
+            <button onClick={() => scrollTo("help")} className="text-gray-300 hover:text-cyan-400 transition-colors">
               Get Help
-            </Link>
+            </button>
           </div>
 
           <Link
@@ -65,27 +79,24 @@ function Navbar() {
 
         {mobileMenuOpen ? (
           <div className="md:hidden border-t border-gray-800 py-3 space-y-3">
-            <Link
-              to="/?section=home"
+            <button
               className="block text-gray-300 hover:text-cyan-400 transition-colors"
-              onClick={() => setMobileMenuOpen(false)}
+              onClick={() => scrollTo("home")}
             >
               Home
-            </Link>
-            <Link
-              to="/?section=resources"
+            </button>
+            <button
               className="block text-gray-300 hover:text-cyan-400 transition-colors"
-              onClick={() => setMobileMenuOpen(false)}
+              onClick={() => scrollTo("resources")}
             >
               Resources
-            </Link>
-            <Link
-              to="/?section=help"
+            </button>
+            <button
               className="block text-gray-300 hover:text-cyan-400 transition-colors"
-              onClick={() => setMobileMenuOpen(false)}
+              onClick={() => scrollTo("help")}
             >
               Get Help
-            </Link>
+            </button>
             <Link
               to="/support"
               className="inline-flex bg-cyan-500 hover:bg-cyan-600 text-white rounded-full px-5 py-2 btn-primary font-semibold"
